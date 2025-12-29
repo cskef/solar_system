@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2845510852670759374}
   - component: {fileID: 1818813389837112090}
   - component: {fileID: 8110755048742458544}
+  - component: {fileID: 4133597007418889669}
+  - component: {fileID: 3662565393607941542}
   m_Layer: 0
   m_Name: terre
   m_TagString: Untagged
@@ -119,5 +121,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27abb3cde0a844a419e702f17f903e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4133597007418889669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4939922513298798141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66d68e645b0140a409b213b8e963a040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 30
+--- !u!114 &3662565393607941542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4939922513298798141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4bbb68430bb1ca468c2f4d5d8273f03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
