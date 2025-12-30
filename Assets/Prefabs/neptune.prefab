@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 4900469285652408041}
   - component: {fileID: 3961430784517320936}
   - component: {fileID: 3974484854252112367}
+  - component: {fileID: 3880889957972275621}
+  - component: {fileID: 6852089996755563803}
   m_Layer: 0
   m_Name: neptune
   m_TagString: Untagged
@@ -148,3 +150,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4bbb68430bb1ca468c2f4d5d8273f03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  center: {fileID: 0}
+  orbitSpeed: 10
+  orbitAxis: {x: 0, y: 1, z: 0}
+--- !u!114 &3880889957972275621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035469027139447221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e479ac289a13bf147b1fd644b5b3699f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetName: 
+  description: 
+  diameterKm: 0
+  distanceToSunMillionKm: 0
+  revolutionDays: 0
+--- !u!114 &6852089996755563803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035469027139447221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308584e6789737042bd102a09b07d914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: 
+  description: 
+  diameterKm: 0
+  distanceToSunMillionKm: 0
+  revolutionDays: 0

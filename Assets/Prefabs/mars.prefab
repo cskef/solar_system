@@ -15,6 +15,9 @@ GameObject:
   - component: {fileID: 5365816512590608519}
   - component: {fileID: 6112855724039689070}
   - component: {fileID: 1186584390155877300}
+  - component: {fileID: 3288926574496281149}
+  - component: {fileID: 226768085515289541}
+  - component: {fileID: 8769243643881994843}
   m_Layer: 0
   m_Name: mars
   m_TagString: Untagged
@@ -148,3 +151,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4bbb68430bb1ca468c2f4d5d8273f03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  center: {fileID: 0}
+  orbitSpeed: 10
+  orbitAxis: {x: 0, y: 1, z: 0}
+--- !u!114 &3288926574496281149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8964731199965147438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e479ac289a13bf147b1fd644b5b3699f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetName: 
+  description: 
+  diameterKm: 0
+  distanceToSunMillionKm: 0
+  revolutionDays: 0
+--- !u!114 &226768085515289541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8964731199965147438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308584e6789737042bd102a09b07d914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: 
+  description: 
+  diameterKm: 0
+  distanceToSunMillionKm: 0
+  revolutionDays: 0
+--- !u!114 &8769243643881994843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8964731199965147438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308584e6789737042bd102a09b07d914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: 
+  description: 
+  diameterKm: 0
+  distanceToSunMillionKm: 0
+  revolutionDays: 0

@@ -15,6 +15,9 @@ GameObject:
   - component: {fileID: 3821621988622746461}
   - component: {fileID: 1647003100604235797}
   - component: {fileID: 782435586350146908}
+  - component: {fileID: 7926564938989032129}
+  - component: {fileID: 5824871247084038962}
+  - component: {fileID: 8387423306814235097}
   m_Layer: 0
   m_Name: venus
   m_TagString: Untagged
@@ -148,3 +151,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4bbb68430bb1ca468c2f4d5d8273f03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  center: {fileID: 0}
+  orbitSpeed: 10
+  orbitAxis: {x: 0, y: 1, z: 0}
+--- !u!114 &7926564938989032129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5726653053040124905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e479ac289a13bf147b1fd644b5b3699f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetName: 
+  description: 
+  diameterKm: 0
+  distanceToSunMillionKm: 0
+  revolutionDays: 0
+--- !u!114 &5824871247084038962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5726653053040124905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e479ac289a13bf147b1fd644b5b3699f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetName: 
+  description: 
+  diameterKm: 0
+  distanceToSunMillionKm: 0
+  revolutionDays: 0
+--- !u!114 &8387423306814235097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5726653053040124905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308584e6789737042bd102a09b07d914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: 
+  description: 
+  diameterKm: 0
+  distanceToSunMillionKm: 0
+  revolutionDays: 0
