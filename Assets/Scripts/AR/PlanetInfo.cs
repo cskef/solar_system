@@ -7,4 +7,5 @@ public class PlanetInfo : MonoBehaviour
     public float diameterKm;
     public float distanceToSunMillionKm;
     public float revolutionDays;
+    public float rotationDays;
 }
