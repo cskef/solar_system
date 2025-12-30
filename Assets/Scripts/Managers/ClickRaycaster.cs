@@ -34,7 +34,7 @@ public class ClickRaycaster : MonoBehaviour
             PlanetInfo info = hit.collider.GetComponent<PlanetInfo>();
             if (info != null)
             {
-                ui.ShowPlanetInfo(info.title, info.description, info.diameterKm, info.distanceToSunMillionKm, info.revolutionDays);
+                ui.ShowPlanetInfo(info.title, info.description, info.diameterKm, info.distanceToSunMillionKm, info.revolutionDays, info.rotationDays);
             }
         }
     }
