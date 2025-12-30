@@ -1023,6 +1023,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6308163738905562121, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
   m_PrefabInstance: {fileID: 1318854145632338694}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1144936749 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7228944559678234361, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+  m_PrefabInstance: {fileID: 1318854145632338694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1144936750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1036,6 +1041,71 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sunTransform: {fileID: 19889201}
+--- !u!1 &1157835331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1157835332}
+  - component: {fileID: 1157835333}
+  m_Layer: 0
+  m_Name: OrbitRings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1157835332
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157835331}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1144936749}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1157835333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157835331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5b65ca53119894eaa7096af72ec0a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {fileID: 19889201}
+  rings:
+  - name: Mercure
+    radius: 0.28
+  - name: "V\xE9nus"
+    radius: 0.38
+  - name: Terre
+    radius: 0.5
+  - name: Mars
+    radius: 0.62
+  - name: Jupiter
+    radius: 0.85
+  - name: Saturne
+    radius: 1.05
+  - name: Uranus
+    radius: 1.25
+  - name: Neptune
+    radius: 1.45
+  segments: 256
+  lineWidth: 0.004
+  loop: 1
 --- !u!1 &1273179769
 GameObject:
   m_ObjectHideFlags: 0
@@ -1695,8 +1765,24 @@ PrefabInstance:
       value: 1433.5
       objectReference: {fileID: 0}
     - target: {fileID: 1590564539111413354, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: center
+      value: 
+      objectReference: {fileID: 19889201}
+    - target: {fileID: 1590564539111413354, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: radius
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590564539111413354, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: orbitSpeed
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1673547825533449389, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: center
+      value: 
+      objectReference: {fileID: 19889201}
+    - target: {fileID: 1673547825533449389, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: radius
+      value: 1.05
       objectReference: {fileID: 0}
     - target: {fileID: 1673547825533449389, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: orbitSpeed
@@ -1725,8 +1811,24 @@ PrefabInstance:
       value: 2872.5
       objectReference: {fileID: 0}
     - target: {fileID: 2704631653238746816, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: center
+      value: 
+      objectReference: {fileID: 19889201}
+    - target: {fileID: 2704631653238746816, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: radius
+      value: 0.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704631653238746816, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: orbitSpeed
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3091046508589301689, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: center
+      value: 
+      objectReference: {fileID: 19889201}
+    - target: {fileID: 3091046508589301689, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: radius
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 3091046508589301689, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: orbitSpeed
@@ -1818,6 +1920,14 @@ PrefabInstance:
       value: 57.9
       objectReference: {fileID: 0}
     - target: {fileID: 5365263895993252828, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: center
+      value: 
+      objectReference: {fileID: 19889201}
+    - target: {fileID: 5365263895993252828, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: radius
+      value: 0.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 5365263895993252828, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: orbitSpeed
       value: -5
       objectReference: {fileID: 0}
@@ -1856,6 +1966,14 @@ PrefabInstance:
       value: 778.6
       objectReference: {fileID: 0}
     - target: {fileID: 6813114486781788325, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: center
+      value: 
+      objectReference: {fileID: 19889201}
+    - target: {fileID: 6813114486781788325, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6813114486781788325, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: orbitSpeed
       value: 15
       objectReference: {fileID: 0}
@@ -1868,8 +1986,24 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7117953962929229147, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: center
+      value: 
+      objectReference: {fileID: 19889201}
+    - target: {fileID: 7117953962929229147, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: radius
+      value: 0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 7117953962929229147, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: orbitSpeed
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175628634288814099, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: center
+      value: 
+      objectReference: {fileID: 19889201}
+    - target: {fileID: 7175628634288814099, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: radius
+      value: 1.45
       objectReference: {fileID: 0}
     - target: {fileID: 7175628634288814099, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: orbitSpeed
@@ -1943,7 +2077,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7228944559678234361, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1157835332}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6308163738905562121, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       insertIndex: -1
