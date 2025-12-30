@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     }
 
     public void ShowPlanetInfo(string name, string desc, float diameterKm, float distanceMillionKm, float revolutionDays, float rotationDays)
+    public void ShowPlanetInfo(string name, string desc, float diameterKm, float distanceMillionKm, float revolutionDays)
     {
         if (panel == null) return;
 
@@ -25,10 +26,13 @@ public class UIManager : MonoBehaviour
         if (statsText != null)
         {
             statsText.text =
-                $"Diam�tre : {diameterKm:N0} km\n" +
+                $"Diamï¿½tre : {diameterKm:N0} km\n" +
                 $"Distance au Soleil : {distanceMillionKm:N1} M km\n" +
-                $"R�volution : {revolutionDays:N1} jours";
+                $"Rï¿½volution : {revolutionDays:N1} jours";
                 $"Rotation : {rotationDays:N1} jours";
+                $"Diamètre : {diameterKm:N0} km\n" +
+                $"Distance au Soleil : {distanceMillionKm:N1} M km\n" +
+                $"Révolution : {revolutionDays:N1} jours";
         }
     }
 
