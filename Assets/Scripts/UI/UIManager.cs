@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
 
     public void ShowPlanetInfo(string name, string desc,
         float diameterKm, float distanceMillionKm,
-        float revolutionDays, float rotationHours)
+        float revolutionDays, float rotationPeriod)
     {
         PauseRevolution(true);
 
@@ -32,9 +32,11 @@ public class UIManager : MonoBehaviour
 
         if (statsText != null)
         {
-            string rotTxt = rotationHours < 0
-                ? $"{Mathf.Abs(rotationHours):N1} h (rétrograde)"
-                : $"{rotationHours:N1} h";
+            string rotTxt;
+            if (rotationPeriod < 0) rotTxt = $"{Mathf.Abs(rotationPeriod):N1} jours (rétrograde)"; // Cas de Venus
+            else if (rotationPeriod < 1) rotTxt =  $"{rotationPeriod:N2} jour";
+            else if (rotationPeriod == 27) rotTxt = $"{rotationPeriod:N1} jours (rotation différentielle)"; // Cas du soleil
+            else rotTxt = $"{rotationPeriod:N2} jours";
 
             statsText.text =
                 $"Diamètre : {diameterKm:N0} km\n" +

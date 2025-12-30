@@ -6,6 +6,6 @@ public class PlanetInfo : MonoBehaviour
     [TextArea] public string description;
     public float diameterKm;
     public float distanceToSunMillionKm;
-    public float revolutionDays;
-    public float rotationDays;
+    public float revolutionPeriod;
+    public float rotationPeriod;
 }

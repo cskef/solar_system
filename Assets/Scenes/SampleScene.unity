@@ -375,7 +375,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -150}
+  m_AnchoredPosition: {x: 0, y: -200}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &355683410
@@ -1733,6 +1733,14 @@ PrefabInstance:
       value: 60182
       objectReference: {fileID: 0}
     - target: {fileID: 840839831098918119, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: rotationPeriod
+      value: 0.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 840839831098918119, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: revolutionPeriod
+      value: 60182
+      objectReference: {fileID: 0}
+    - target: {fileID: 840839831098918119, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: distanceToSunMillionKm
       value: 4495.1
       objectReference: {fileID: 0}
@@ -1752,6 +1760,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1003804379038823892, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: revolutionDays
+      value: 10759.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1003804379038823892, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: rotationPeriod
+      value: 0.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1003804379038823892, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: revolutionPeriod
       value: 10759.22
       objectReference: {fileID: 0}
     - target: {fileID: 1003804379038823892, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
@@ -1798,6 +1814,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1710880921874201717, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: revolutionDays
+      value: 30688.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710880921874201717, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: rotationPeriod
+      value: 0.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710880921874201717, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: revolutionPeriod
       value: 30688.5
       objectReference: {fileID: 0}
     - target: {fileID: 1710880921874201717, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
@@ -1848,7 +1872,19 @@ PrefabInstance:
         des plan\xE8tes."
       objectReference: {fileID: 0}
     - target: {fileID: 3803543994531528537, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: rotationDays
+      value: -228
+      objectReference: {fileID: 0}
+    - target: {fileID: 3803543994531528537, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: revolutionDays
+      value: 224.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3803543994531528537, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: rotationPeriod
+      value: 243
+      objectReference: {fileID: 0}
+    - target: {fileID: 3803543994531528537, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: revolutionPeriod
       value: 224.7
       objectReference: {fileID: 0}
     - target: {fileID: 3803543994531528537, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
@@ -1874,6 +1910,14 @@ PrefabInstance:
       value: 686.98
       objectReference: {fileID: 0}
     - target: {fileID: 3952740181560907441, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: rotationPeriod
+      value: 1.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 3952740181560907441, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: revolutionPeriod
+      value: 686.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 3952740181560907441, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: distanceToSunMillionKm
       value: 227.9
       objectReference: {fileID: 0}
@@ -1891,6 +1935,10 @@ PrefabInstance:
         les plan\xE8tes en orbite et sa fusion nucl\xE9aire produit lumi\xE8re et
         chaleur. Il repr\xE9sente \u2248 99,86 % de la masse du syst\xE8me solaire."
       objectReference: {fileID: 0}
+    - target: {fileID: 4207627099711673848, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: rotationPeriod
+      value: 27
+      objectReference: {fileID: 0}
     - target: {fileID: 4982608254469435940, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: title
       value: Mercure
@@ -1901,13 +1949,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4982608254469435940, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: description
-      value: "Plus proche du Soleil et plus petite plan\xE8te. Presque sans atmosph\xE8re
-        : temp\xE9ratures extr\xEAmes. Une ann\xE9e dure 88 jours, c\u2019est la
-        plan\xE8te la plus rapide en orbite."
+      value: "Plus proche du Soleil et plus petite plan\xE8te. Elle a une surface
+        rocheuse et est presque sans atmosph\xE8re avec des temp\xE9ratures extr\xEAmes
+        entre le jour et la nuit. C\u2019est la plan\xE8te la plus rapide en orbite."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982608254469435940, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: rotationDays
+      value: 58.6
       objectReference: {fileID: 0}
     - target: {fileID: 4982608254469435940, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: revolutionDays
-      value: 57.9
+      value: 87.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982608254469435940, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: rotationPeriod
+      value: 58.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982608254469435940, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: revolutionPeriod
+      value: 87.97
       objectReference: {fileID: 0}
     - target: {fileID: 4982608254469435940, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: distanceToSunMillionKm
@@ -1953,6 +2013,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6492300760484528680, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: revolutionDays
+      value: 4332.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 6492300760484528680, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: rotationPeriod
+      value: 0.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 6492300760484528680, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: revolutionPeriod
       value: 4332.59
       objectReference: {fileID: 0}
     - target: {fileID: 6492300760484528680, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
@@ -2059,6 +2127,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8370506727537464220, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: revolutionDays
+      value: 365.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8370506727537464220, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: rotationPeriod
+      value: 0.997
+      objectReference: {fileID: 0}
+    - target: {fileID: 8370506727537464220, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: revolutionPeriod
       value: 365.25
       objectReference: {fileID: 0}
     - target: {fileID: 8370506727537464220, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
