@@ -8,15 +8,23 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI descriptionText;
     public TextMeshProUGUI statsText;
 
+    private OrbitAround[] orbits;
+
     private void Start()
     {
         if (panel != null) panel.SetActive(false);
+
+        // On récupère toutes les orbites une fois
+        orbits = FindObjectsOfType<OrbitAround>(true);
     }
 
-    public void ShowPlanetInfo(string name, string desc, float diameterKm, float distanceMillionKm, float revolutionDays, float rotationDays)
+    public void ShowPlanetInfo(string name, string desc,
+        float diameterKm, float distanceMillionKm,
+        float revolutionDays, float rotationHours)
     {
-        if (panel == null) return;
+        PauseRevolution(true);
 
+        if (panel == null) return;
         panel.SetActive(true);
 
         if (titleText != null) titleText.text = name;
@@ -24,16 +32,31 @@ public class UIManager : MonoBehaviour
 
         if (statsText != null)
         {
+            string rotTxt = rotationHours < 0
+                ? $"{Mathf.Abs(rotationHours):N1} h (rétrograde)"
+                : $"{rotationHours:N1} h";
+
             statsText.text =
-                $"Diamï¿½tre : {diameterKm:N0} km\n" +
+                $"Diamètre : {diameterKm:N0} km\n" +
                 $"Distance au Soleil : {distanceMillionKm:N1} M km\n" +
-                $"Rï¿½volution : {revolutionDays:N1} jours\n" +
-                $"Rotation : {rotationDays:N1} jours";
+                $"Révolution : {revolutionDays:N1} jours\n" +
+                $"Rotation : {rotTxt}";
         }
     }
 
     public void HidePlanetInfo()
     {
         if (panel != null) panel.SetActive(false);
+        PauseRevolution(false);
+    }
+
+    private void PauseRevolution(bool pause)
+    {
+        if (orbits == null) return;
+
+        foreach (var o in orbits)
+        {
+            if (o != null) o.enabled = !pause;
+        }
     }
 }
