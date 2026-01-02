@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 852076c45ae71e349816fe17cf778f5c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - mercure: {fileID: 8300000, guid: d7ac14cc288952048889558867293555, type: 3}
+  - venus: {fileID: 8300000, guid: e943ed2b700b8e547b523d4ff29faaff, type: 3}
+  - terre: {instanceID: 0}
+  - mars: {instanceID: 0}
+  - jupiter: {instanceID: 0}
+  - uranus: {instanceID: 0}
+  - saturne: {instanceID: 0}
+  - neptune: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

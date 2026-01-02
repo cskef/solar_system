@@ -485,8 +485,8 @@ GameObject:
   - component: {fileID: 355683411}
   - component: {fileID: 355683410}
   m_Layer: 5
-  m_Name: Close
-  m_TagString: Untagged
+  m_Name: close
+  m_TagString: close
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -738,7 +738,7 @@ GameObject:
   - component: {fileID: 489371246}
   m_Layer: 0
   m_Name: UIManagerObject
-  m_TagString: Untagged
+  m_TagString: UIManagerObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1213,6 +1213,123 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sunTransform: {fileID: 19889201}
+--- !u!114 &1144936751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144936748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 852076c45ae71e349816fe17cf778f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mercure: {fileID: 8300000, guid: d7ac14cc288952048889558867293555, type: 3}
+  venus: {fileID: 8300000, guid: e943ed2b700b8e547b523d4ff29faaff, type: 3}
+  terre: {fileID: 8300000, guid: 39ab74f0307507248aec90219fda8e6d, type: 3}
+  mars: {fileID: 8300000, guid: b1bac74af629b7a4888956a78b28f64d, type: 3}
+  jupiter: {fileID: 8300000, guid: 003e893aa7d499249b193471c5d9bac2, type: 3}
+  uranus: {fileID: 8300000, guid: 75c91b09017ec234aabb007485be9ac3, type: 3}
+  saturne: {fileID: 8300000, guid: ec146c985037dc24c80e2297761c26a7, type: 3}
+  neptune: {fileID: 8300000, guid: afa49ee7b157f1d44ad633bcaa3900ef, type: 3}
+--- !u!82 &1144936752
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144936748}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1157835331
 GameObject:
   m_ObjectHideFlags: 0
@@ -1657,7 +1774,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 1.05
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -2089,6 +2206,10 @@ PrefabInstance:
       propertyPath: distanceToSunMillionKm
       value: 1433.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1141612542800264553, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_TagString
+      value: venus
+      objectReference: {fileID: 0}
     - target: {fileID: 1590564539111413354, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: center
       value: 
@@ -2100,6 +2221,10 @@ PrefabInstance:
     - target: {fileID: 1590564539111413354, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: orbitSpeed
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642317520059167940, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_TagString
+      value: saturn
       objectReference: {fileID: 0}
     - target: {fileID: 1673547825533449389, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: center
@@ -2155,6 +2280,10 @@ PrefabInstance:
       propertyPath: orbitSpeed
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 2942857231515822910, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_TagString
+      value: terre
+      objectReference: {fileID: 0}
     - target: {fileID: 3091046508589301689, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: center
       value: 
@@ -2167,9 +2296,17 @@ PrefabInstance:
       propertyPath: orbitSpeed
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 3215471496042415117, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_TagString
+      value: mercure
+      objectReference: {fileID: 0}
     - target: {fileID: 3631945418142831281, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: rotationSpeed
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3720237482605825589, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_TagString
+      value: jupiter
       objectReference: {fileID: 0}
     - target: {fileID: 3803543994531528537, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: title
@@ -2288,6 +2425,10 @@ PrefabInstance:
       propertyPath: distanceToSunMillionKm
       value: 57.9
       objectReference: {fileID: 0}
+    - target: {fileID: 5302513128147887194, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_TagString
+      value: mars
+      objectReference: {fileID: 0}
     - target: {fileID: 5365263895993252828, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: center
       value: 
@@ -2341,6 +2482,10 @@ PrefabInstance:
     - target: {fileID: 6492300760484528680, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: distanceToSunMillionKm
       value: 778.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6548930172633552969, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_TagString
+      value: neptune
       objectReference: {fileID: 0}
     - target: {fileID: 6813114486781788325, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: center
@@ -2460,6 +2605,10 @@ PrefabInstance:
       propertyPath: rotationSpeed
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8738413625033499015, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_TagString
+      value: uranus
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -2470,6 +2619,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6308163738905562121, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1144936750}
+    - targetCorrespondingSourceObject: {fileID: 6308163738905562121, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1144936751}
+    - targetCorrespondingSourceObject: {fileID: 6308163738905562121, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1144936752}
     - targetCorrespondingSourceObject: {fileID: 2942857231515822910, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       insertIndex: -1
       addedObject: {fileID: 685989546}
