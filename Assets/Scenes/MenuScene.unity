@@ -1076,7 +1076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc400e08957eb8e40b80960793b69c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exploreSceneName: SampleScene
+  arSceneName: SampleScene
 --- !u!4 &1022548297
 Transform:
   m_ObjectHideFlags: 0
