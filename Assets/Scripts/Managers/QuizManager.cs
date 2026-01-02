@@ -13,6 +13,8 @@ public class QuizManager : MonoBehaviour
     public Button[] answerButtons; // 4 boutons
     public TextMeshProUGUI feedbackText;
     public TextMeshProUGUI scoreText;
+    public GameObject restartButton;
+
 
     private int currentIndex = 0;
     private int score = 0;
@@ -28,10 +30,18 @@ public class QuizManager : MonoBehaviour
 
         clickRaycaster = FindObjectOfType<ClickRaycaster>();
 
+        if (restartButton != null)
+            restartButton.SetActive(false);
+
+
     }
 
     public void StartQuiz()
     {
+        if (restartButton != null)
+            restartButton.SetActive(false);
+
+
         if (questions == null || questions.Length == 0)
         {
             Debug.LogError("QuizManager: No questions set.");
@@ -41,6 +51,8 @@ public class QuizManager : MonoBehaviour
         isFinished = false;
         score = 0;
         currentIndex = 0;
+        ShuffleQuestions();
+
 
         if (quizPanel != null) quizPanel.SetActive(true);
         if (feedbackText != null) feedbackText.text = "";
@@ -113,7 +125,7 @@ public class QuizManager : MonoBehaviour
         }
 
         currentIndex++;
-        Invoke(nameof(ShowQuestion), 0.6f); // petit délai pour lire feedback
+        Invoke(nameof(ShowQuestion), 0.3f); // petit délai pour lire feedback
     }
 
     private void FinishQuiz()
@@ -127,8 +139,23 @@ public class QuizManager : MonoBehaviour
             feedbackText.text = (score >= questions.Length / 2) ? " Bravo !" : " Encore un effort !";
         }
 
+        if (restartButton != null)
+            restartButton.SetActive(true);
+
         // Désactiver boutons réponses
         foreach (var b in answerButtons)
             b.gameObject.SetActive(false);
     }
+
+    private void ShuffleQuestions()
+    {
+        for (int i = 0; i < questions.Length; i++)
+        {
+            int r = Random.Range(i, questions.Length);
+            var tmp = questions[i];
+            questions[i] = questions[r];
+            questions[r] = tmp;
+        }
+    }
+
 }
