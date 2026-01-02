@@ -17,12 +17,17 @@ public class QuizManager : MonoBehaviour
     private int currentIndex = 0;
     private int score = 0;
     private bool isFinished = false;
+    private ClickRaycaster clickRaycaster;
+
 
     private void Awake()
     {
         if (quizPanel != null) quizPanel.SetActive(false);
         if (feedbackText != null) feedbackText.text = "";
         if (scoreText != null) scoreText.text = "";
+
+        clickRaycaster = FindObjectOfType<ClickRaycaster>();
+
     }
 
     public void StartQuiz()
@@ -40,6 +45,9 @@ public class QuizManager : MonoBehaviour
         if (quizPanel != null) quizPanel.SetActive(true);
         if (feedbackText != null) feedbackText.text = "";
 
+        if (clickRaycaster != null) clickRaycaster.enabled = false;
+
+
         ShowQuestion();
     }
 
@@ -48,6 +56,9 @@ public class QuizManager : MonoBehaviour
         if (quizPanel != null) quizPanel.SetActive(false);
         if (feedbackText != null) feedbackText.text = "";
         if (scoreText != null) scoreText.text = "";
+
+        if (clickRaycaster != null) clickRaycaster.enabled = true;
+
     }
 
     private void ShowQuestion()
