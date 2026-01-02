@@ -1,16 +1,30 @@
 using UnityEngine;
+using System.Collections;
 
 public class ARSceneStarter : MonoBehaviour
 {
     public QuizManager quizManager;
 
-    private void Start()
+    private IEnumerator Start()
     {
-        string mode = PlayerPrefs.GetString(AppLaunch.MODE_KEY, AppLaunch.MODE_EXPLORE);
+        // Attendre 1 frame pour que tous les scripts/UI soient initialisés
+        yield return null;
 
-        if (mode == AppLaunch.MODE_QUIZ && quizManager != null)
+        if (LaunchState.StartInQuiz)
         {
-            quizManager.StartQuiz();
+            Debug.Log("AR: StartInQuiz = True (launching quiz)");
+
+            if (quizManager == null)
+            {
+                Debug.LogError("ARSceneStarter: quizManager is NULL. Assign QuizManagerObject in inspector.");
+            }
+            else
+            {
+                quizManager.StartQuiz();
+            }
         }
+
+        // Reset pour éviter que ça relance le quiz après
+        LaunchState.StartInQuiz = false;
     }
 }

@@ -18,7 +18,7 @@ public class QuizManager : MonoBehaviour
     private int score = 0;
     private bool isFinished = false;
 
-    private void Start()
+    private void Awake()
     {
         if (quizPanel != null) quizPanel.SetActive(false);
         if (feedbackText != null) feedbackText.text = "";
@@ -93,12 +93,12 @@ public class QuizManager : MonoBehaviour
         if (chosenIndex == q.correctIndex)
         {
             score++;
-            if (feedbackText != null) feedbackText.text = "✅ Bonne réponse !";
+            if (feedbackText != null) feedbackText.text = " Bonne réponse !";
         }
         else
         {
             string good = (q.correctIndex >= 0 && q.correctIndex < q.answers.Length) ? q.answers[q.correctIndex] : "—";
-            if (feedbackText != null) feedbackText.text = $"❌ Faux. Bonne réponse : {good}";
+            if (feedbackText != null) feedbackText.text = $" Faux. Bonne réponse : {good}";
         }
 
         currentIndex++;
@@ -113,7 +113,7 @@ public class QuizManager : MonoBehaviour
         if (scoreText != null) scoreText.text = $"Score final : {score}/{questions.Length}";
         if (feedbackText != null)
         {
-            feedbackText.text = (score >= questions.Length / 2) ? "👏 Bravo !" : "💪 Encore un effort !";
+            feedbackText.text = (score >= questions.Length / 2) ? " Bravo !" : " Encore un effort !";
         }
 
         // Désactiver boutons réponses

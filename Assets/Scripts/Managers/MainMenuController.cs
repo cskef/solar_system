@@ -7,13 +7,13 @@ public class MainMenuController : MonoBehaviour
 
     public void GoExplore()
     {
-        PlayerPrefs.SetString(AppLaunch.MODE_KEY, AppLaunch.MODE_EXPLORE);
+        LaunchState.StartInQuiz = false;
         SceneManager.LoadScene(arSceneName);
     }
 
     public void GoQuiz()
     {
-        PlayerPrefs.SetString(AppLaunch.MODE_KEY, AppLaunch.MODE_QUIZ);
+        LaunchState.StartInQuiz = true;
         SceneManager.LoadScene(arSceneName);
     }
 

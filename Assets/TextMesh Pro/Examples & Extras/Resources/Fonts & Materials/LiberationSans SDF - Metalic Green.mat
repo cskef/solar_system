@@ -12,10 +12,7 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - BEVEL_ON
-  - GLOW_ON
   - OUTLINE_ON
-  - UNDERLAY_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
@@ -60,7 +57,7 @@ Material:
     - _ColorMask: 15
     - _CullMode: 0
     - _Diffuse: 0
-    - _FaceDilate: 0.15
+    - _FaceDilate: 0.5
     - _FaceUVSpeedX: 0
     - _FaceUVSpeedY: 0
     - _GlowInner: 0.136
@@ -78,8 +75,8 @@ Material:
     - _PerspectiveFilter: 0
     - _Reflectivity: 12.76
     - _ScaleRatioA: 0.9
-    - _ScaleRatioB: 0.59624994
-    - _ScaleRatioC: 0.59624994
+    - _ScaleRatioB: 0.28125
+    - _ScaleRatioC: 0.28125
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
