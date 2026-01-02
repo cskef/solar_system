@@ -3,18 +3,18 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
-    [Header("Scene Names")]
-    public string exploreSceneName = "SampleScene";
+    public string arSceneName = "SampleScene";
 
     public void GoExplore()
     {
-        SceneManager.LoadScene(exploreSceneName);
+        LaunchState.StartInQuiz = false;
+        SceneManager.LoadScene(arSceneName);
     }
 
     public void GoQuiz()
     {
-        // Pour l’instant on va dans la scène AR (le quiz viendra après)
-        SceneManager.LoadScene(exploreSceneName);
+        LaunchState.StartInQuiz = true;
+        SceneManager.LoadScene(arSceneName);
     }
 
     public void QuitApp()
