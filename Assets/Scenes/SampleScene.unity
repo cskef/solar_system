@@ -1240,11 +1240,11 @@ GameObject:
   - component: {fileID: 545893111}
   m_Layer: 0
   m_Name: ARCamera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &545893111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1382,13 +1382,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 545893110}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.8777025, y: -0, z: -0, w: 0.47920606}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 122.733, y: 0, z: 0}
 --- !u!1 &558644686
 GameObject:
   m_ObjectHideFlags: 0
@@ -2708,6 +2708,131 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1078090840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1078090841}
+  - component: {fileID: 1078090844}
+  - component: {fileID: 1078090843}
+  - component: {fileID: 1078090842}
+  m_Layer: 0
+  m_Name: ImageTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1078090841
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078090840}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1144936749}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1078090842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078090840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObserverBehaviour: {fileID: 1078090844}
+  mHiddenRoot: {fileID: 0}
+  mTargetName: 3
+  mDatasetName: Vuforia/MarkerSolarSystemAR.xml
+  mCastedBehaviour: {fileID: 1078090844}
+  mMeshFilter: {fileID: 0}
+  mMeshRenderer: {fileID: 0}
+--- !u!114 &1078090843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078090840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 886328de6a5c14cbb85854fdf1a5085b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StatusFilter: 1
+  UsePoseSmoothing: 0
+  AnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 3.3333333
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.3
+      value: 1
+      inSlope: 3.3333333
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  OnTargetFound:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTargetLost:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1078090844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078090840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1631628248, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PreviewVisible: 1
+  RuntimeOcclusion: 0
+  RuntimeCollider: 0
+  mTrackableName: 3
+  mInitializedInEditor: 1
+  mDataSetPath: Vuforia/MarkerSolarSystemAR.xml
+  mAspectRatio: 0.64285713
+  mImageTargetType: 0
+  mWidth: 4
+  mHeight: 2.5714285
+  mRuntimeTexture: {fileID: 0}
+  mMotionHint: 1
+  mTrackingOptimization: 0
+  mTrackingOptimizationNeedsUpgrade: 0
+  mPreview: {fileID: 1078090842}
 --- !u!1 &1095360648
 GameObject:
   m_ObjectHideFlags: 0
@@ -4280,11 +4405,11 @@ GameObject:
   - component: {fileID: 1702662891}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1702662887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4396,13 +4521,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1702662886}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.010935403, y: -0.99216765, z: 0.11000309, w: 0.058164526}
-  m_LocalPosition: {x: 70.29803, y: 6.947598, z: -4.6082177}
+  m_LocalRotation: {x: 0.3740801, y: -0.745314, z: 0.27987403, w: 0.47564876}
+  m_LocalPosition: {x: 1.61, y: 1.71, z: 0.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 12.534, y: -173.067, z: 2.025}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1702662891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5156,7 +5281,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1078090841}
     m_Modifications:
     - target: {fileID: 132223162748123392, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: rotationSpeed
@@ -5547,16 +5672,28 @@ PrefabInstance:
       value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 7228944559678234361, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228944559678234361, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228944559678234361, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228944559678234361, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 69.52658
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7228944559678234361, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.771812
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7228944559678234361, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.135237
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7228944559678234361, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5584,6 +5721,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7228944559678234361, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228944559678234361, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8370506727537464220, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
@@ -5646,7 +5787,7 @@ SceneRoots:
   - {fileID: 545893116}
   - {fileID: 1702662890}
   - {fileID: 832575519}
-  - {fileID: 1318854145632338694}
+  - {fileID: 1078090841}
   - {fileID: 2058453617}
   - {fileID: 1774159263}
   - {fileID: 489371247}
