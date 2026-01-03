@@ -4,8 +4,14 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
-    [Header("Audio Source")]
-    public AudioSource source;
+    [Header("Planet / SFX Source (click planets)")]
+    public AudioSource sfxSource;
+
+    [Header("Ambience Source (background loop)")]
+    public AudioSource ambienceSource;
+
+    [Header("Ambience Clip")]
+    public AudioClip ambienceClip;
 
     private void Awake()
     {
@@ -17,33 +23,56 @@ public class AudioManager : MonoBehaviour
         }
         Instance = this;
 
-        // Si pas assigné, on essaie de le récupérer
-        if (source == null)
-            source = GetComponent<AudioSource>();
+        // Sécurité si non assigné
+        if (sfxSource == null) sfxSource = GetComponent<AudioSource>();
 
-        // Optionnel : garder le manager entre Menu et Scene AR
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        StartAmbience();
+    }
+
+    // Ambience
+    public void StartAmbience()
+    {
+        if (ambienceSource == null || ambienceClip == null) return;
+
+        ambienceSource.loop = true;
+        ambienceSource.clip = ambienceClip;
+
+        if (!ambienceSource.isPlaying)
+            ambienceSource.Play();
+    }
+
+    public void StopAmbience()
+    {
+        if (ambienceSource == null) return;
+        ambienceSource.Stop();
+        ambienceSource.clip = null;
+    }
+
+    //Planet SFX 
     public void PlayClip(AudioClip clip)
     {
-        if (source == null) return;
+        if (sfxSource == null) return;
 
         if (clip == null)
         {
-            Stop();
+            StopPlanetAudio();
             return;
         }
 
-        source.Stop();
-        source.clip = clip;
-        source.Play();
+        sfxSource.Stop();
+        sfxSource.clip = clip;
+        sfxSource.Play();
     }
 
-    public void Stop()
+    public void StopPlanetAudio()
     {
-        if (source == null) return;
-        source.Stop();
-        source.clip = null;
+        if (sfxSource == null) return;
+        sfxSource.Stop();
+        sfxSource.clip = null;
     }
 }

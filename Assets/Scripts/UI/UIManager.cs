@@ -70,7 +70,7 @@ public class UIManager : MonoBehaviour
 
         // Stop audio planète
         if (AudioManager.Instance != null)
-            AudioManager.Instance.Stop();
+            AudioManager.Instance.StopPlanetAudio();
     }
 
 
