@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-using TMPro;
+﻿using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class QuizManager : MonoBehaviour
@@ -70,6 +71,20 @@ public class QuizManager : MonoBehaviour
 
     public void CloseQuiz()
     {
+        // 1) Fermer l'UI du quiz
+        if (quizPanel != null)
+            quizPanel.SetActive(false);
+
+        // 2) Stop audio planète si nécessaire (optionnel)
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.StopPlanetAudio(); // ou Stop() selon ton AudioManager
+
+        // 3) Reset le mode quiz
+        LaunchState.StartInQuiz = false;
+
+        // 4) Retour menu
+        SceneManager.LoadScene("MenuScene");
+
         if (quizPanel != null) quizPanel.SetActive(false);
         if (feedbackText != null) feedbackText.text = "";
         if (scoreText != null) scoreText.text = "";
@@ -78,8 +93,9 @@ public class QuizManager : MonoBehaviour
 
         if (placementManager != null)
             placementManager.EnableExplorePlacement();
-
     }
+
+
 
     private void ShowQuestion()
     {
