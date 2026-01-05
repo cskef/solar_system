@@ -49,7 +49,7 @@ public class UIManager : MonoBehaviour
         {
             string rotationText = rotationHours < 0
                 ? $"{Mathf.Abs(rotationHours):N1} h (rétrograde)"
-                : $"{rotationHours:N1} h";
+                : $"{rotationHours:N1} jours";
 
             statsText.text =
                 $"Diamètre : {diameterKm:N0} km\n" +
