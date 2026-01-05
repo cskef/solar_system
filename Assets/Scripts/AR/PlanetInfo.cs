@@ -8,4 +8,6 @@ public class PlanetInfo : MonoBehaviour
     public float distanceToSunMillionKm;
     public float revolutionPeriod;
     public float rotationPeriod;
+
+    public AudioClip audioClip;
 }

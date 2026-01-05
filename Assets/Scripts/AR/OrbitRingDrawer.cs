@@ -1,80 +1,101 @@
 using UnityEngine;
+using System.Linq;
+using System.Collections;
 
 public class OrbitRingDrawer : MonoBehaviour
 {
-    [System.Serializable]
-    public class Ring
-    {
-        public string name;
-        public float radius = 0.5f;  
-    }
-
-    [Header("Orbit Center")]
-    public Transform center;                 // Soleil
-
-    [Header("Rings")]
-    public Ring[] rings;
+    [Header("Optional (can be empty)")]
+    public OrbitAround[] planetOrbits;
 
     [Header("Render Settings")]
-    public int segments = 128;               // rondeur
-    public float lineWidth = 0.005f;         // épaisseur
+    public int segments = 160;
+    public float lineWidth = 0.004f;
+    public float yExtraOffset = 0.0f;
     public bool loop = true;
 
-    private void Start()
+    public void RebuildNextFrame()
     {
-        if (center == null)
-        {
-            var sunObj = GameObject.Find("Sun");
-            if (sunObj != null) center = sunObj.transform;
-        }
+        StartCoroutine(RebuildCoroutine());
+    }
 
-        if (center == null)
+    private IEnumerator RebuildCoroutine()
+    {
+        yield return null; // attendre 1 frame après placement/activation
+        RebuildNow();
+    }
+
+    public void RebuildNow()
+    {
+        if (planetOrbits == null || planetOrbits.Length == 0)
+            planetOrbits = FindObjectsOfType<OrbitAround>(true);
+
+        // Nettoie les anciens rings
+        for (int i = transform.childCount - 1; i >= 0; i--)
+            Destroy(transform.GetChild(i).gameObject);
+
+        if (planetOrbits == null || planetOrbits.Length == 0)
         {
-            Debug.LogError("OrbitRingDrawer: Sun not found. Name it 'Sun' or assign center.");
+            Debug.LogWarning("OrbitRingDrawer: No OrbitAround found.");
             return;
         }
 
-        DrawAllRings();
-    }
+        var valid = planetOrbits
+            .Where(o => o != null && o.center != null)
+            .OrderBy(o => GetWorldRadius(o))
+            .ToArray();
 
-    public void DrawAllRings()
-    {
-        // Nettoyage si relancé
-        for (int i = transform.childCount - 1; i >= 0; i--)
+        foreach (var orbit in valid)
         {
-            Destroy(transform.GetChild(i).gameObject);
-        }
+            float worldR = GetWorldRadius(orbit);
+            if (worldR <= 0.0001f) continue;
 
-        foreach (var ring in rings)
-        {
-            CreateRing(ring.name, ring.radius);
+            CreateRing(orbit, worldR);
         }
     }
 
-    private void CreateRing(string ringName, float radius)
+    // Rayon réel en WORLD (plan XZ)
+    private float GetWorldRadius(OrbitAround orbit)
     {
-        GameObject go = new GameObject(ringName);
-        go.transform.SetParent(transform);
-        go.transform.position = center.position;
+        Vector3 offset = orbit.transform.position - orbit.center.position;
+        offset.y = 0f;
+        return offset.magnitude;
+    }
 
-        var lr = go.AddComponent<LineRenderer>();
-        lr.useWorldSpace = true;
+    private void CreateRing(OrbitAround orbit, float worldRadius)
+    {
+        GameObject go = new GameObject("Orbit_" + orbit.gameObject.name);
+        go.transform.SetParent(transform, false);
+        go.transform.localRotation = Quaternion.identity;
+        go.transform.localScale = Vector3.one;
+
+        // Centre du Soleil converti en LOCAL
+        Vector3 centerLocal = transform.InverseTransformPoint(orbit.center.position);
+        go.transform.localPosition = centerLocal;
+
+        LineRenderer lr = go.AddComponent<LineRenderer>();
+        lr.useWorldSpace = false;
         lr.loop = loop;
         lr.positionCount = segments;
         lr.startWidth = lineWidth;
         lr.endWidth = lineWidth;
-
-        
         lr.material = new Material(Shader.Find("Sprites/Default"));
+
+        //  Conversion WORLD -> LOCAL (à cause du scale du parent)
+        float sx = transform.lossyScale.x;
+        if (sx <= 0.0001f) sx = 1f;
+        float localRadius = worldRadius / sx;
+
+        // Y en local (différence world -> convertie)
+        float yLocal = (transform.InverseTransformPoint(orbit.transform.position).y
+                     - transform.InverseTransformPoint(orbit.center.position).y)
+                     + yExtraOffset;
 
         for (int i = 0; i < segments; i++)
         {
             float angle = (float)i / segments * Mathf.PI * 2f;
-            float x = Mathf.Cos(angle) * radius;
-            float z = Mathf.Sin(angle) * radius;
-
-            Vector3 pos = new Vector3(center.position.x + x, center.position.y, center.position.z + z);
-            lr.SetPosition(i, pos);
+            float x = Mathf.Cos(angle) * localRadius;
+            float z = Mathf.Sin(angle) * localRadius;
+            lr.SetPosition(i, new Vector3(x, yLocal, z));
         }
     }
 }
