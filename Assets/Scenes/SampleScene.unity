@@ -157,7 +157,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 925e7ede1c3ce8d4f994ee1b1d8fe9b3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 62a32aac69d121a43b86132668604b89, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -653,6 +653,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91677467}
   m_CullTransparentMesh: 1
+--- !u!1 &105876873
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 105876875}
+  - component: {fileID: 105876874}
+  m_Layer: 0
+  m_Name: UIControls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &105876874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105876873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f392d8ab0373947a511390aa1611b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orbitRingsRoot: {fileID: 1157835331}
+--- !u!4 &105876875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105876873}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6975, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &240323735
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,6 +920,18 @@ MonoBehaviour:
       - m_Target: {fileID: 558644687}
         m_TargetAssemblyTypeName: ToggleObject, Assembly-CSharp
         m_MethodName: Toggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 105876874}
+        m_TargetAssemblyTypeName: OrbitToggle, Assembly-CSharp
+        m_MethodName: ToggleOrbits
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1238,13 +1295,14 @@ GameObject:
   - component: {fileID: 545893113}
   - component: {fileID: 545893112}
   - component: {fileID: 545893111}
+  - component: {fileID: 545893117}
   m_Layer: 0
   m_Name: ARCamera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &545893111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1389,6 +1447,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 122.733, y: 0, z: 0}
+--- !u!114 &545893117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545893110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34ddbf156c4cc534f950436333869dba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiManager: {fileID: 489371246}
+  placementManager: {fileID: 1247756674}
+  planetsLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  maxDistance: 10
 --- !u!1 &558644686
 GameObject:
   m_ObjectHideFlags: 0
@@ -3047,27 +3123,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c5b65ca53119894eaa7096af72ec0a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  center: {fileID: 19889201}
-  rings:
-  - name: Mercure
-    radius: 0.28
-  - name: "V\xE9nus"
-    radius: 0.38
-  - name: Terre
-    radius: 0.5
-  - name: Mars
-    radius: 0.62
-  - name: Jupiter
-    radius: 0.85
-  - name: Saturne
-    radius: 1.05
-  - name: Uranus
-    radius: 1.25
-  - name: Neptune
-    radius: 1.45
-  segments: 256
-  lineWidth: 0.004
+  planetOrbits: []
+  segments: 128
+  lineWidth: 0.002
+  yExtraOffset: 0.001
   loop: 1
+--- !u!1 &1247756673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1247756675}
+  - component: {fileID: 1247756674}
+  m_Layer: 0
+  m_Name: PlacementManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1247756674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247756673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbef323957a977a4ebe3dd529dc51998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  solarSystemRoot: {fileID: 1144936749}
+  hintText: {fileID: 2074299653}
+  distanceInFrontOfCamera: 0.7
+  uniformScale: 0.7
+  extraRotation: {x: 0, y: 0, z: 0}
+  orbitDrawer: {fileID: 0}
+--- !u!4 &1247756675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247756673}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6975, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1273179769
 GameObject:
   m_ObjectHideFlags: 0
@@ -3421,13 +3531,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 96
-  m_fontSizeBase: 96
+  m_fontSize: 82
+  m_fontSizeBase: 82
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -3585,6 +3695,7 @@ MonoBehaviour:
   feedbackText: {fileID: 1489821113}
   scoreText: {fileID: 240323737}
   restartButton: {fileID: 820528611}
+  placementManager: {fileID: 0}
 --- !u!4 &1400239511
 Transform:
   m_ObjectHideFlags: 0
@@ -4280,11 +4391,11 @@ GameObject:
   - component: {fileID: 1702662891}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1702662887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4415,6 +4526,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ddbf156c4cc534f950436333869dba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiManager: {fileID: 489371246}
+  placementManager: {fileID: 1247756674}
+  planetsLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  maxDistance: 10
 --- !u!1 &1774159260
 GameObject:
   m_ObjectHideFlags: 0
@@ -4922,6 +5039,7 @@ RectTransform:
   - {fileID: 780192416}
   - {fileID: 338124060}
   - {fileID: 2116635582}
+  - {fileID: 2074299652}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4929,6 +5047,142 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &2074299651
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2074299652}
+  - component: {fileID: 2074299654}
+  - component: {fileID: 2074299653}
+  m_Layer: 5
+  m_Name: HintText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2074299652
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074299651}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2058453617}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 700, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2074299653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074299651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Tapez sur l'ecran pour placer le systeme solaire
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &2074299654
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074299651}
+  m_CullTransparentMesh: 1
 --- !u!1 &2116635581
 GameObject:
   m_ObjectHideFlags: 0
@@ -5229,6 +5483,10 @@ PrefabInstance:
       propertyPath: distanceToSunMillionKm
       value: 1433.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1141612542800264553, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1590564539111413354, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: center
       value: 
@@ -5240,6 +5498,10 @@ PrefabInstance:
     - target: {fileID: 1590564539111413354, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: orbitSpeed
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642317520059167940, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1673547825533449389, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: center
@@ -5287,6 +5549,10 @@ PrefabInstance:
       propertyPath: distanceToSunMillionKm
       value: 2872.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1853748318407902993, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_Radius
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 2704631653238746816, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: center
       value: 
@@ -5298,6 +5564,10 @@ PrefabInstance:
     - target: {fileID: 2704631653238746816, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: orbitSpeed
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2942857231515822910, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3091046508589301689, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: center
@@ -5311,9 +5581,21 @@ PrefabInstance:
       propertyPath: orbitSpeed
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 3215471496042415117, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3631945418142831281, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: rotationSpeed
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3720237482605825589, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3737362277637386577, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_Radius
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3803543994531528537, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: title
@@ -5388,6 +5670,10 @@ PrefabInstance:
       propertyPath: distanceToSunMillionKm
       value: 227.9
       objectReference: {fileID: 0}
+    - target: {fileID: 4173920409540943455, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_Radius
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4207627099711673848, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: title
       value: Soleil
@@ -5444,6 +5730,10 @@ PrefabInstance:
       propertyPath: distanceToSunMillionKm
       value: 57.9
       objectReference: {fileID: 0}
+    - target: {fileID: 5302513128147887194, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5365263895993252828, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: center
       value: 
@@ -5467,6 +5757,10 @@ PrefabInstance:
     - target: {fileID: 6308163738905562121, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: m_Name
       value: solar_system_elements
+      objectReference: {fileID: 0}
+    - target: {fileID: 6308163738905562121, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6492300760484528680, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: title
@@ -5502,6 +5796,18 @@ PrefabInstance:
       propertyPath: distanceToSunMillionKm
       value: 778.6
       objectReference: {fileID: 0}
+    - target: {fileID: 6498360488168152702, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_Radius
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6548930172633552969, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774077440737168880, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_Radius
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 6813114486781788325, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: center
       value: 
@@ -5533,6 +5839,10 @@ PrefabInstance:
     - target: {fileID: 7117953962929229147, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: orbitSpeed
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133124925266096634, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_Radius
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7175628634288814099, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: center
@@ -5602,6 +5912,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7360455051880484210, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_Radius
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8211167867536964383, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8370506727537464220, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: title
       value: Terre
@@ -5636,8 +5954,20 @@ PrefabInstance:
       propertyPath: distanceToSunMillionKm
       value: 149.6
       objectReference: {fileID: 0}
+    - target: {fileID: 8374691817858254346, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_Radius
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 8376508525495372797, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
       propertyPath: rotationSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8459089895223627289, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_Radius
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8738413625033499015, guid: f076ce3ebaa6c5448ae7cc59a87f7b56, type: 3}
+      propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5671,3 +6001,5 @@ SceneRoots:
   - {fileID: 1400239511}
   - {fileID: 85208935}
   - {fileID: 957441179}
+  - {fileID: 1247756675}
+  - {fileID: 105876875}

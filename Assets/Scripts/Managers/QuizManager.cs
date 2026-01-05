@@ -21,6 +21,9 @@ public class QuizManager : MonoBehaviour
     private bool isFinished = false;
     private ClickRaycaster clickRaycaster;
 
+    public TapToPlaceSolarSystem placementManager;
+
+
 
     private void Awake()
     {
@@ -33,6 +36,8 @@ public class QuizManager : MonoBehaviour
         if (restartButton != null)
             restartButton.SetActive(false);
 
+        if (placementManager == null)
+            placementManager = FindObjectOfType<TapToPlaceSolarSystem>();
 
     }
 
@@ -70,6 +75,9 @@ public class QuizManager : MonoBehaviour
         if (scoreText != null) scoreText.text = "";
 
         if (clickRaycaster != null) clickRaycaster.enabled = true;
+
+        if (placementManager != null)
+            placementManager.EnableExplorePlacement();
 
     }
 
