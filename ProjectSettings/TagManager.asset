@@ -6,12 +6,14 @@ TagManager:
   tags:
   - mercure
   - terre
-  - mars
   - venus
   - jupiter
   - saturn
   - uranus
   - neptune
+  - mars
+  - close
+  - UIManagerObject
   layers:
   - Default
   - TransparentFX
