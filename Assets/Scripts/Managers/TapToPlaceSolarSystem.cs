@@ -4,8 +4,8 @@ using TMPro;
 public class TapToPlaceSolarSystem : MonoBehaviour
 {
     [Header("Assign in Inspector")]
-    public Transform solarSystemRoot; 
-    public TextMeshProUGUI hintText;
+    public Transform solarSystemRoot;
+    public TextMeshProUGUI hintText; 
 
     [Header("Placement")]
     public float distanceInFrontOfCamera = 0.8f;
@@ -14,16 +14,12 @@ public class TapToPlaceSolarSystem : MonoBehaviour
 
     private bool placed = false;
     private bool placementEnabled = true;
-    public OrbitRingDrawer orbitDrawer;
 
-
-    private void Start()
+    private void OnEnable()
     {
-        // On décide si on permet le placement au départ selon le mode
-        bool startInQuiz = LaunchState.StartInQuiz;
-
+        // À chaque activation du groupe Tap, on remet l’état correct
         placed = false;
-        placementEnabled = !startInQuiz;
+        placementEnabled = !LaunchState.StartInQuiz && !LaunchState.UseVuforia;
 
         if (solarSystemRoot != null)
             solarSystemRoot.gameObject.SetActive(false);
@@ -36,12 +32,14 @@ public class TapToPlaceSolarSystem : MonoBehaviour
         if (!placementEnabled) return;
         if (placed) return;
 
+        // Touch
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             Place();
             return;
         }
 
+        // Mouse (test PC)
         if (Input.GetMouseButtonDown(0))
         {
             Place();
@@ -65,10 +63,9 @@ public class TapToPlaceSolarSystem : MonoBehaviour
 
         Vector3 pos = cam.transform.position + cam.transform.forward * distanceInFrontOfCamera;
 
-        // rotation seulement sur Y 
+        // rotation seulement sur Y
         Vector3 forwardFlat = cam.transform.forward;
         forwardFlat.y = 0f;
-
         if (forwardFlat.sqrMagnitude < 0.0001f)
             forwardFlat = Vector3.forward;
 
@@ -80,12 +77,15 @@ public class TapToPlaceSolarSystem : MonoBehaviour
 
         solarSystemRoot.gameObject.SetActive(true);
         placed = true;
+        foreach (var orb in solarSystemRoot.GetComponentsInChildren<OrbitAround>(true))
+        {
+            orb.RecalculateRadius();
+        }
 
-        // Rebuild orbites 1 frame après activation (fiable)
+
+        // Rebuild orbites
         OrbitRingDrawer drawer = FindObjectOfType<OrbitRingDrawer>(true);
-        if (drawer != null)
-            drawer.RebuildNextFrame();
-
+        if (drawer != null) drawer.RebuildNextFrame();
 
         UpdateHint();
     }
@@ -94,26 +94,24 @@ public class TapToPlaceSolarSystem : MonoBehaviour
     {
         if (hintText == null) return;
 
-        if (placementEnabled && !placed)
-        {
-            hintText.gameObject.SetActive(true);
+        bool shouldShow = placementEnabled && !placed;
+
+        hintText.gameObject.SetActive(shouldShow);
+        if (shouldShow)
             hintText.text = "Tapez sur l’écran pour placer le système solaire";
-        }
-        else
-        {
-            hintText.gameObject.SetActive(false);
-        }
     }
 
     public bool IsPlaced() => placed;
 
-    // À appeler quand on quitte le quiz pour passer en mode Explorer
-    public void EnableExplorePlacement()
+    // Si tu veux réactiver manuellement le placement
+    public void ResetPlacement()
     {
-        placementEnabled = true;
+        placed = false;
+        placementEnabled = !LaunchState.StartInQuiz && !LaunchState.UseVuforia;
 
-        // si le système n'est pas encore placé, on remet le hint
-        if (!placed)
-            UpdateHint();
+        if (solarSystemRoot != null)
+            solarSystemRoot.gameObject.SetActive(false);
+
+        UpdateHint();
     }
 }

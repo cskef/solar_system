@@ -13,6 +13,16 @@ public class OrbitRingDrawer : MonoBehaviour
     public float yExtraOffset = 0.0f;
     public bool loop = true;
 
+    [Header("Material (optional)")]
+    public Material lineMaterial;
+
+    private void Awake()
+    {
+        // Mat par défaut si pas assignée
+        if (lineMaterial == null)
+            lineMaterial = new Material(Shader.Find("Sprites/Default"));
+    }
+
     public void RebuildNextFrame()
     {
         StartCoroutine(RebuildCoroutine());
@@ -20,14 +30,14 @@ public class OrbitRingDrawer : MonoBehaviour
 
     private IEnumerator RebuildCoroutine()
     {
-        yield return null; // attendre 1 frame après placement/activation
+        yield return null; // attendre 1 frame après activation/placement
         RebuildNow();
     }
 
     public void RebuildNow()
     {
         if (planetOrbits == null || planetOrbits.Length == 0)
-            planetOrbits = FindObjectsOfType<OrbitAround>(true);
+            planetOrbits = FindObjectsByType<OrbitAround>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
         // Nettoie les anciens rings
         for (int i = transform.childCount - 1; i >= 0; i--)
@@ -41,60 +51,85 @@ public class OrbitRingDrawer : MonoBehaviour
 
         var valid = planetOrbits
             .Where(o => o != null && o.center != null)
-            .OrderBy(o => GetWorldRadius(o))
+            .OrderBy(o => GetWorldRadiusOnOrbitPlane(o))
             .ToArray();
 
         foreach (var orbit in valid)
         {
-            float worldR = GetWorldRadius(orbit);
+            float worldR = GetWorldRadiusOnOrbitPlane(orbit);
             if (worldR <= 0.0001f) continue;
 
             CreateRing(orbit, worldR);
         }
     }
 
-    // Rayon réel en WORLD (plan XZ)
-    private float GetWorldRadius(OrbitAround orbit)
+    // Rayon en WORLD mais calculé sur le plan de l'orbite (cohérent avec OrbitAround)
+    private float GetWorldRadiusOnOrbitPlane(OrbitAround orbit)
     {
+        Vector3 axisWorld = GetOrbitAxisWorld(orbit);
         Vector3 offset = orbit.transform.position - orbit.center.position;
-        offset.y = 0f;
-        return offset.magnitude;
+        Vector3 offsetOnPlane = Vector3.ProjectOnPlane(offset, axisWorld);
+        return offsetOnPlane.magnitude;
+    }
+
+    private Vector3 GetOrbitAxisWorld(OrbitAround orbit)
+    {
+        // OrbitAround calcule l'axe via center.TransformDirection(orbitAxis)
+        // Ici on reproduit la même logique :
+        Vector3 axis = orbit.orbitAxis;
+        if (orbit.center != null)
+            axis = orbit.center.TransformDirection(axis);
+        if (axis.sqrMagnitude < 0.000001f) axis = Vector3.up;
+        return axis.normalized;
     }
 
     private void CreateRing(OrbitAround orbit, float worldRadius)
     {
         GameObject go = new GameObject("Orbit_" + orbit.gameObject.name);
         go.transform.SetParent(transform, false);
-        go.transform.localRotation = Quaternion.identity;
         go.transform.localScale = Vector3.one;
 
-        // Centre du Soleil converti en LOCAL
+        // Centre du Soleil en local
         Vector3 centerLocal = transform.InverseTransformPoint(orbit.center.position);
         go.transform.localPosition = centerLocal;
 
+        // Orientation : le ring doit être dans le plan orthogonal à l'axe de l'orbite
+        // On aligne "up" local du ring sur l'axe (en local du drawer)
+        Vector3 axisWorld = GetOrbitAxisWorld(orbit);
+        Vector3 axisLocal = transform.InverseTransformDirection(axisWorld).normalized;
+        if (axisLocal.sqrMagnitude < 0.000001f) axisLocal = Vector3.up;
+
+        // La normale du plan = axisLocal, donc on fait une rotation qui met Vector3.up -> axisLocal
+        go.transform.localRotation = Quaternion.FromToRotation(Vector3.up, axisLocal);
+
+        // LineRenderer
         LineRenderer lr = go.AddComponent<LineRenderer>();
         lr.useWorldSpace = false;
         lr.loop = loop;
         lr.positionCount = segments;
         lr.startWidth = lineWidth;
         lr.endWidth = lineWidth;
-        lr.material = new Material(Shader.Find("Sprites/Default"));
+        lr.material = lineMaterial;
 
-        //  Conversion WORLD -> LOCAL (à cause du scale du parent)
-        float sx = transform.lossyScale.x;
-        if (sx <= 0.0001f) sx = 1f;
-        float localRadius = worldRadius / sx;
+        // Convertir le rayon WORLD en rayon LOCAL du drawer
+        // On prend un facteur basé sur la moyenne du scale XY du drawer (robuste)
+        Vector3 s = transform.lossyScale;
+        float scaleAvg = (Mathf.Abs(s.x) + Mathf.Abs(s.z)) * 0.5f;
+        if (scaleAvg <= 0.0001f) scaleAvg = 1f;
+        float localRadius = worldRadius / scaleAvg;
 
-        // Y en local (différence world -> convertie)
-        float yLocal = (transform.InverseTransformPoint(orbit.transform.position).y
-                     - transform.InverseTransformPoint(orbit.center.position).y)
-                     + yExtraOffset;
+        // yExtraOffset : dans l’espace local du ring (après rotation)
+        float yLocal = yExtraOffset;
 
         for (int i = 0; i < segments; i++)
         {
-            float angle = (float)i / segments * Mathf.PI * 2f;
+            float t = (float)i / segments;
+            float angle = t * Mathf.PI * 2f;
+
             float x = Mathf.Cos(angle) * localRadius;
             float z = Mathf.Sin(angle) * localRadius;
+
+            // le cercle est dans le plan XZ du ring (puis rotation du ring fait le plan réel)
             lr.SetPosition(i, new Vector3(x, yLocal, z));
         }
     }

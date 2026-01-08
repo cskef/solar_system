@@ -1,12 +1,21 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class BackToMenu : MonoBehaviour
+public class BackToMenuButton : MonoBehaviour
 {
-    public string menuSceneName = "MenuScene";
+    [Header("Scene")]
+    public string menuSceneName = "MenuScene"; 
 
-    public void GoBackToMenu()
+    public bool resetLaunchState = true;
+
+    public void GoToMenu()
     {
+        if (resetLaunchState)
+        {
+            LaunchState.StartInQuiz = false;
+            LaunchState.UseVuforia = false;
+        }
+
         SceneManager.LoadScene(menuSceneName);
     }
 }
