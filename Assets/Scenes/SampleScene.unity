@@ -2084,7 +2084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sun: {fileID: 19889201}
   solarSystemRoot: {fileID: 1144936749}
-  alignDirection: {x: 0, y: 0, z: 1}
+  alignDirection: {x: 1, y: 0, z: 0}
   buttonLabel: {fileID: 100525768}
   pauseOrbitsDuringAlignment: 1
 --- !u!4 &606503528
