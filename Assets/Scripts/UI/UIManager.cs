@@ -47,18 +47,35 @@ public class UIManager : MonoBehaviour
 
         if (statsText != null)
         {
+            // Rotation texte
             string rotTxt;
-            if (rotationPeriod < 0) rotTxt = $"{Mathf.Abs(rotationPeriod):N1} jours (rétrograde)"; // Cas de Venus
+            if (rotationPeriod < 0) rotTxt = $"{Mathf.Abs(rotationPeriod):N1} jours (rétrograde)"; // Venus
             else if (rotationPeriod <= 1) rotTxt = $"{rotationPeriod:N2} jour";
-            else if (rotationPeriod == 27) rotTxt = $"{rotationPeriod:N1} jours (rotation différentielle)"; // Cas du soleil
+            else if (rotationPeriod == 27) rotTxt = $"{rotationPeriod:N1} jours (rotation différentielle)"; // Soleil
             else rotTxt = $"{rotationPeriod:N2} jours";
+
+            // Comparaison taille vs Terre
+            const float earthDiameterKm = 12742f;
+            string ratioTxt = "—";
+
+            if (diameterKm > 0f)
+            {
+                float ratio = diameterKm / earthDiameterKm;
+
+                // Affichage lisible :
+                // <1 => 2 décimales (ex: 0,38×)
+                // >=1 => 1 décimale (ex: 11,2×)
+                ratioTxt = (ratio < 1f) ? ratio.ToString("0.00") : ratio.ToString("0.0");
+            }
 
             statsText.text =
                 $"Diamètre : {diameterKm:N0} km\n" +
+                $"Taille vs Terre : ≈ {ratioTxt}× Terre\n" +
                 $"Distance au Soleil : {distanceMillionKm:N1} M km\n" +
                 $"Révolution : {revolutionPeriod:N1} jours\n" +
                 $"Rotation : {rotTxt}";
         }
+
     }
 
 
