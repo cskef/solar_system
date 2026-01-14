@@ -21,7 +21,7 @@ MonoBehaviour:
     maxSimultaneousImageTargets: 1
     virtualSceneScaleFactor: 1
     modelTargetRecoWhileExtendedTracked: 1
-    shareRecordingsInITunes: 0
+    shareRecordingsInITunes: 1
     logLevel: 0
     version: 11.4.4
     eulaAcceptedVersions: '{"Values":["11.4"]}'

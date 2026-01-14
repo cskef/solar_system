@@ -70,7 +70,7 @@ public class UIManager : MonoBehaviour
 
             statsText.text =
                 $"Diamètre : {diameterKm:N0} km\n" +
-                $"Taille vs Terre : ≈ {ratioTxt}× Terre\n" +
+                $"Taille vs Terre : ≈ {ratioTxt} × Terre\n" +
                 $"Distance au Soleil : {distanceMillionKm:N1} M km\n" +
                 $"Révolution : {revolutionPeriod:N1} jours\n" +
                 $"Rotation : {rotTxt}";
