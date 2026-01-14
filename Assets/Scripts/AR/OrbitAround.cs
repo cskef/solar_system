@@ -26,7 +26,8 @@ public class OrbitAround : MonoBehaviour
         if (center == null) return;
 
         // rotation autour du soleil selon l’axe du soleil (pas world up)
-        transform.RotateAround(center.position, AxisWorld, orbitSpeed * Time.deltaTime);
+        float t = (TimeController.Instance != null) ? TimeController.Instance.TimeScale : 1f;
+        transform.RotateAround(center.position, AxisWorld, orbitSpeed * t * Time.deltaTime);
 
         if (lockRadius)
             SnapToRadius();
