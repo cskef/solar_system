@@ -3,8 +3,13 @@ using Vuforia;
 
 public class VuforiaTargetActivator : MonoBehaviour
 {
-    public GameObject solarSystemRoot;   // solar_system_elements
-    public GameObject vuforiaHintUI;     // UI "Scannez l'image..."
+    public GameObject solarSystemRoot;
+    public GameObject vuforiaHintUI;
+
+    public GameObject orbitRingsRoot;
+    public GameObject timeControlsGroup;
+
+    public OrbitToggle orbitToggle; 
 
     private ObserverBehaviour observer;
 
@@ -15,14 +20,12 @@ public class VuforiaTargetActivator : MonoBehaviour
 
     private void OnEnable()
     {
-        // Si on n'est PAS en mode Vuforia, on cache tout et on ne fait rien
         if (!LaunchState.UseVuforia || LaunchState.StartInQuiz)
         {
             ForceOff();
             return;
         }
 
-        // Mode Vuforia : au début on affiche le hint et on cache le système
         SetState(false);
 
         if (observer != null)
@@ -52,25 +55,38 @@ public class VuforiaTargetActivator : MonoBehaviour
 
     private void SetState(bool tracked)
     {
-        if (solarSystemRoot != null)
-            solarSystemRoot.SetActive(tracked);
-
         if (vuforiaHintUI != null)
             vuforiaHintUI.SetActive(!tracked);
 
         if (solarSystemRoot != null)
+            solarSystemRoot.SetActive(tracked);
+
+        if (timeControlsGroup != null)
+            timeControlsGroup.SetActive(tracked);
+
+        // Orbites : ne s'affichent que si tracked
+        if (orbitToggle != null)
         {
-            foreach (var orb in solarSystemRoot.GetComponentsInChildren<OrbitAround>(true))
+            orbitToggle.SetOrbits(tracked); // ON -> rebuild automatique
+        }
+        else if (orbitRingsRoot != null)
+        {
+            orbitRingsRoot.SetActive(tracked);
+
+            if (tracked)
             {
-                orb.RecalculateRadius();
+                var drawer = orbitRingsRoot.GetComponentInChildren<OrbitRingDrawer>(true);
+                if (drawer != null) drawer.RebuildNextFrame();
             }
         }
 
+        if (!tracked) return;
 
-        if (tracked)
+        // Quand tracked : recalculer rayons
+        if (solarSystemRoot != null)
         {
-            var drawer = FindObjectOfType<OrbitRingDrawer>(true);
-            if (drawer != null) drawer.RebuildNextFrame();
+            foreach (var orb in solarSystemRoot.GetComponentsInChildren<OrbitAround>(true))
+                orb.RecalculateRadius();
         }
     }
 
@@ -78,5 +94,10 @@ public class VuforiaTargetActivator : MonoBehaviour
     {
         if (vuforiaHintUI != null) vuforiaHintUI.SetActive(false);
         if (solarSystemRoot != null) solarSystemRoot.SetActive(false);
+        if (orbitRingsRoot != null) orbitRingsRoot.SetActive(false);
+        if (timeControlsGroup != null) timeControlsGroup.SetActive(false);
+
+        if (orbitToggle != null)
+            orbitToggle.SetOrbits(false);
     }
 }
