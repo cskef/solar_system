@@ -77,6 +77,9 @@ public class VuforiaTargetActivator : MonoBehaviour
             {
                 var drawer = orbitRingsRoot.GetComponentInChildren<OrbitRingDrawer>(true);
                 if (drawer != null) drawer.RebuildNextFrame();
+
+                var scaleCtrl = FindFirstObjectByType<ScaleModeController>(FindObjectsInactive.Include);
+                if (scaleCtrl != null) scaleCtrl.InitializeIfNeeded();
             }
         }
 

@@ -81,6 +81,10 @@ public class TapToPlaceSolarSystem : MonoBehaviour
         solarSystemRoot.gameObject.SetActive(true);
         placed = true;
 
+        var scaleCtrl = FindFirstObjectByType<ScaleModeController>(FindObjectsInactive.Include);
+        if (scaleCtrl != null) scaleCtrl.InitializeIfNeeded();
+
+
         foreach (var orb in solarSystemRoot.GetComponentsInChildren<OrbitAround>(true))
             orb.RecalculateRadius();
 
