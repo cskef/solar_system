@@ -6,22 +6,22 @@
 
 ---
 
-## 📋 Table des matières
+## Table des matières
 
-- [📌 Présentation du projet](#-présentation-du-projet)
-- [🎯 Objectifs pédagogiques](#-objectifs-pédagogiques)
-- [🧠 Fonctionnalités principales](#-fonctionnalités-principales)
-- [🛠️ Technologies utilisées](#️-technologies-utilisées)
-- [🧱 Architecture du projet](#-architecture-du-projet)
-- [▶️ Utilisation de l’application](#️-utilisation-de-lapplication)
-- [📱 Plateforme cible](#-plateforme-cible)
+- [ Présentation du projet](#-présentation-du-projet)
+- [ Objectifs pédagogiques](#-objectifs-pédagogiques)
+- [ Fonctionnalités principales](#-fonctionnalités-principales)
+- [ Technologies utilisées](#️-technologies-utilisées)
+- [ Architecture du projet](#-architecture-du-projet)
+- [ Utilisation de l’application](#️-utilisation-de-lapplication)
+- [ Plateforme cible](#-plateforme-cible)
 - [👥 Projet académique](#-projet-académique)
-- [📌 Auteur(s)](#-auteurs)
+- [ Auteur(s)](#-auteurs)
 - [📄 Licence](#-licence)
 
 ---
 
-## 📌 Présentation du projet
+##  Présentation du projet
 
 **Solar System AR** est une application mobile en **réalité augmentée** développée avec **Unity**.
 Elle permet de découvrir le système solaire de manière interactive : l’utilisateur peut visualiser les planètes en 3D, consulter des informations pédagogiques, écouter des explications audio et tester ses connaissances à travers un quiz.
@@ -164,8 +164,8 @@ Ce projet a été réalisé dans un cadre pédagogique afin de mettre en pratiqu
 
 ## 📄 Licence
 
-Projet à usage **éducatif**. 📚
+Projet à usage **éducatif**. 
 
 ---
 
-*Pour des questions ou contributions, ouvrez une issue sur GitHub !* 🚀
+*Pour des questions ou contributions, ouvrez une issue sur GitHub !* 
