@@ -28,84 +28,81 @@ Elle permet de découvrir le système solaire de manière interactive : l’util
 
 Le projet a été conçu dans un cadre **académique**, avec un objectif à la fois **pédagogique** et **technologique**.
 
-### 🎥 Démo rapide
-*(Ajoutez ici une capture d'écran ou un GIF de l'app en action)*
+---
+
+## Objectifs pédagogiques
+
+*  Comprendre l’organisation du système solaire
+*  Visualiser les trajectoires (orbites) des planètes autour du Soleil
+*  Associer des informations scientifiques à chaque planète
+*  Tester les connaissances de l’utilisateur via un quiz interactif
 
 ---
 
-## 🎯 Objectifs pédagogiques
+##  Fonctionnalités principales
 
-* 🌟 Comprendre l’organisation du système solaire
-* 🔄 Visualiser les trajectoires (orbites) des planètes autour du Soleil
-* 📊 Associer des informations scientifiques à chaque planète
-* 🧠 Tester les connaissances de l’utilisateur via un quiz interactif
+###  Menu principal
 
----
-
-## 🧠 Fonctionnalités principales
-
-### 🧭 Menu principal
-
-* **🚀 Explorer** : accéder à la scène de réalité augmentée
-* **❓ Quiz** : lancer directement le quiz
-* **❌ Quitter** l’application
+* ** Explorer** : accéder à la scène de réalité augmentée
+* ** Quiz** : lancer directement le quiz
+* ** Quitter** l’application
 
 ---
 
-### 🌌 Mode Explorer (Réalité augmentée)
+###  Mode Explorer (Réalité augmentée)
 
 * Affichage du système solaire en AR
-* Placement du système solaire par **tap sur l’écran** 🖱️
-* Planètes en rotation autour du Soleil 🌞
-* Orbites visibles (activables / désactivables) 🔄
+* Placement du système solaire par **tap sur l’écran** 
+* Planètes en rotation autour du Soleil 
+* Orbites visibles (activables / désactivables) 
 * Interaction par clic/touch sur une planète :
 
-  * Affichage d’informations pédagogiques 📖
-  * Lecture d’un audio explicatif 🔊
-* Mise en pause automatique de la révolution lors de l’affichage des informations ⏸️
+  * Affichage d’informations pédagogiques 
+  * Lecture d’un audio explicatif 
+* Mise en pause automatique de la révolution lors de l’affichage des informations 
 
 ---
 
-### 🪐 Informations par planète
+###  Informations par planète
 
 Pour chaque planète :
 
 | Aspect | Détail |
 |--------|--------|
-| **Nom** | Ex: Terre 🌍 |
+| **Nom** | Ex: Terre  |
 | **Description** | Pédagogique et engageante |
 | **Diamètre** | En km |
 | **Distance au Soleil** | En millions de km |
 | **Temps de révolution** | En jours terrestres |
 | **Temps de rotation** | En heures |
-| **Audio** | Explicatif 🎵 |
+| **Audio** | Explicatif  |
 
 ---
 
-### ❓ Quiz
+###  Quiz
 
 * Quiz accessible depuis le menu
 * Questions à choix multiples
-* Score final affiché 🏆
-* Bouton **🔄 Rejouer** visible uniquement à la fin
-* Bouton **🚪 Fermer** pour revenir au menu
+* Score final affiché 
+* Bouton ** Rejouer** visible uniquement à la fin
+* Bouton ** Fermer** pour revenir au menu
 
 ---
 
-## 🛠️ Technologies utilisées
+##  Technologies utilisées
 
-* **🎮 Unity** : Moteur de jeu principal
-* **💻 C#** : Langage de programmation
-* **🔍 Réalité Augmentée (AR)** : Via Vuforia
-* **📝 TextMeshPro** : Rendu de texte avancé
-* **🔊 AudioSource** : Gestion audio immersive
-* **📚 Git & GitHub** : Gestion de version collaborative
+* ** Unity** : Moteur de jeu principal
+* ** C#** : Langage de programmation
+* ** Réalité Augmentée (AR)** : Via Vuforia
+* ** TextMeshPro** : Rendu de texte avancé
+* ** AudioSource** : Gestion audio immersive
+* ** Git & GitHub** : Gestion de version collaborative
 
 ---
 
-## 🧱 Architecture du projet
+##  Architecture du projet
 
-### 📂 Scripts principaux
+### Scripts principaux
 
 | Script | Fonction |
 |--------|----------|
@@ -122,28 +119,28 @@ Pour chaque planète :
 
 ---
 
-## ▶️ Utilisation de l’application
+## Utilisation de l’application
 
-1. **📱 Lancer l’application**
-2. **🎯 Choisir Explorer ou Quiz**
-3. **🌌 En mode Explorer :**
+1. ** Lancer l’application**
+2. ** Choisir Explorer ou Quiz**
+3. ** En mode Explorer :**
    - Taper sur l’écran pour placer le système solaire
    - Toucher une planète pour afficher ses informations
-4. **❓ En mode Quiz :**
+4. ** En mode Quiz :**
    - Répondre aux questions
    - Consulter le score final
    - Rejouer ou revenir au menu
 
 ---
 
-## 📱 Plateforme cible
+##  Plateforme cible
 
-* **🤖 Android (mobile)**
-* **📐 Orientation : Paysage**
+* ** Android (mobile)**
+* ** Orientation : Paysage**
 
 ---
 
-## 👥 Projet académique
+##  Projet académique
 
 Ce projet a été réalisé dans un cadre pédagogique afin de mettre en pratique :
 
@@ -155,13 +152,13 @@ Ce projet a été réalisé dans un cadre pédagogique afin de mettre en pratiqu
 
 ---
 
-## 📌 Auteur(s)
+##  Auteur(s)
 
 * **👤 KENNE KEYANYEM Frank**
 * **👤 MEZAGO Wilfried Aymar**
 * **👤 TAMBA MBE Yohan**
-* **🎓 Art & Intelligence Artificielle / ENSPY**
-* **📅 2025/2026**
+* ** Art & Intelligence Artificielle / ENSPY**
+* ** 2025/2026**
 
 ---
 
