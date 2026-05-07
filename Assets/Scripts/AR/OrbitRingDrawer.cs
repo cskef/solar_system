@@ -6,7 +6,7 @@ public class OrbitRingDrawer : MonoBehaviour
     public class Ring
     {
         public string name;
-        public float radius = 0.5f;  // en Unity units (mètres)
+        public float radius = 0.5f;  
     }
 
     [Header("Orbit Center")]
@@ -16,7 +16,7 @@ public class OrbitRingDrawer : MonoBehaviour
     public Ring[] rings;
 
     [Header("Render Settings")]
-    public int segments = 128;               // plus = plus rond
+    public int segments = 128;               // rondeur
     public float lineWidth = 0.005f;         // épaisseur
     public bool loop = true;
 
@@ -64,7 +64,7 @@ public class OrbitRingDrawer : MonoBehaviour
         lr.startWidth = lineWidth;
         lr.endWidth = lineWidth;
 
-        // Matériau simple (Unity built-in)
+        
         lr.material = new Material(Shader.Find("Sprites/Default"));
 
         for (int i = 0; i < segments; i++)
